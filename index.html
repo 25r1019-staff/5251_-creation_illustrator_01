@@ -1,0 +1,1078 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>企業設立ワークシート</title>
+  <style>
+    :root {
+      --ink: #263638;
+      --muted: #637477;
+      --line: #cbd5d5;
+      --soft: #eff5f4;
+      --accent: #286b68
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: #e9eeee;
+      color: var(--ink);
+      font: 16px/1.75 "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      background: #263638;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      z-index: 2
+    }
+
+    .toolbar button {
+      padding: 8px 16px;
+      border: 0;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 24px auto;
+      padding: 0 14px
+    }
+
+    .sheet {
+      background: white;
+      margin: 0 0 22px;
+      padding: 42px 52px;
+      box-shadow: 0 4px 18px #0001;
+      border-radius: 6px;
+      break-after: page
+    }
+
+    .cover {
+      min-height: 700px;
+      border-top: 9px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: .18em;
+      font-size: .8rem
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      line-height: 1.3;
+      margin: 24px 0 10px;
+      letter-spacing: .06em
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 9px;
+      margin: 0 0 16px
+    }
+
+    h2 small {
+      color: var(--accent);
+      margin-right: 12px;
+      font-size: .8rem
+    }
+
+    h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin: 24px 0 8px
+    }
+
+    .lead,
+    .hint {
+      color: var(--muted)
+    }
+
+    .lead {
+      max-width: 650px
+    }
+
+    .hint {
+      font-size: .9rem
+    }
+
+    .note {
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      margin: 16px 0
+    }
+
+    .field {
+      margin: 12px 0
+    }
+
+    .field label {
+      display: block;
+      font-weight: bold;
+      font-size: .88rem;
+      margin-bottom: 4px
+    }
+
+    input[type=text],
+    textarea {
+      width: 100%;
+      padding: 9px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font: inherit;
+      background: white;
+      color: var(--ink)
+    }
+
+    textarea {
+      min-height: 68px;
+      resize: vertical
+    }
+
+    textarea.tall {
+      min-height: 110px
+    }
+
+    /* 1行分の高さで表示し、必要に応じてユーザーが縦方向に拡張できる入力欄 */
+    textarea.single-line {
+      height: 44px;
+      min-height: 44px;
+      resize: vertical;
+      overflow-y: hidden
+    }
+
+    td textarea.cell-textarea {
+      display: block;
+      width: 100%;
+      height: 44px;
+      min-height: 44px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font: inherit;
+      line-height: 1.5;
+      resize: vertical;
+      overflow-y: hidden
+    }
+
+    /* 競合比較表は項目列をコンパクトにし、入力列の幅を確保 */
+    table.competitor-table th:first-child,
+    table.competitor-table td:first-child {
+      width: 20%
+    }
+
+    table.competitor-compare th:first-child,
+    table.competitor-compare td:first-child {
+      width: 20%
+    }
+
+    .g2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .g3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: .9rem
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 8px;
+      vertical-align: top
+    }
+
+    th {
+      background: #e3efed;
+      text-align: left
+    }
+
+    td {
+      height: 44px
+    }
+
+    ul {
+      padding-left: 1.4em
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px
+    }
+
+    .check {
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-size: .9rem
+    }
+
+    .check input {
+      accent-color: var(--accent)
+    }
+
+    .cover-mark {
+      font-size: 4.5rem;
+      line-height: 1.05;
+      color: #dce9e7;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      margin-top: 38px
+    }
+
+    .cover-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .foot {
+      font-size: .75rem;
+      color: #899697;
+      border-top: 1px solid #e5ebeb;
+      padding-top: 10px;
+      margin-top: 24px
+    }
+
+    @media(max-width:650px) {
+      .wrap {
+        margin: 8px auto;
+        padding: 0 7px
+      }
+
+      .sheet {
+        padding: 26px 18px
+      }
+
+      .g2,
+      .g3,
+      .cover-info,
+      .checks {
+        grid-template-columns: 1fr
+      }
+
+      h1 {
+        font-size: 2rem
+      }
+
+      .cover {
+        min-height: 620px
+      }
+
+      table {
+        font-size: .78rem
+      }
+
+      th,
+      td {
+        padding: 5px
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm
+      }
+
+      body {
+        background: white;
+        font-size: 10pt
+      }
+
+      .toolbar {
+        display: none
+      }
+
+      .wrap {
+        margin: 0;
+        padding: 0
+      }
+
+      .sheet {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        padding: 7mm 6mm;
+        min-height: 270mm
+      }
+
+      .cover {
+        min-height: 260mm
+      }
+
+      input,
+      textarea {
+        border: 1px solid #999
+      }
+
+      table,
+      .field,
+      .note {
+        break-inside: avoid
+      }
+    }
+
+    .section-savebar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: -42px -52px 22px;
+      padding: 10px 18px;
+      background: rgba(38, 54, 56, .97);
+      color: #fff;
+      box-shadow: 0 2px 8px #0002;
+    }
+
+    .save-title {
+      font-weight: 700;
+      font-size: .9rem
+    }
+
+    .save-status {
+      margin-left: auto;
+      font-size: .78rem;
+      color: #d8e7e5
+    }
+
+    .save-button {
+      border: 0;
+      border-radius: 4px;
+      padding: 8px 14px;
+      background: #dcebe8;
+      color: #203b39;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    .save-button:hover {
+      background: #fff
+    }
+
+    td[contenteditable="true"] {
+      min-width: 70px;
+      cursor: text;
+      position: relative
+    }
+
+    td[contenteditable="true"]:empty::before {
+      content: attr(data-placeholder);
+      color: #9aa8a8;
+      pointer-events: none
+    }
+
+    td[contenteditable="true"]:empty:focus::before {
+      color: #b5c0c0
+    }
+
+    td[contenteditable="true"]:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+      background: #f7fbfa
+    }
+
+    @media(max-width:650px) {
+      .section-savebar {
+        margin: -26px -18px 18px;
+        padding: 9px 12px;
+        gap: 7px
+      }
+
+      .save-status {
+        margin-left: 0;
+        flex: 1 1 100%
+      }
+
+      .save-button {
+        padding: 7px 10px
+      }
+    }
+
+    @media print {
+      .section-savebar {
+        display: none
+      }
+    }
+
+
+    .save-button:disabled {
+      opacity: .42;
+      cursor: not-allowed;
+      background: #aebcba;
+      color: #f7f9f9
+    }
+
+    .save-status[hidden] {
+      display: none
+    }
+
+    /* 2日目の内容は指定日時まで非表示 */
+    .day2-hidden {
+      display: none !important
+    }
+  </style>
+</head>
+
+<body>
+  <div class="toolbar">各セクションの「登録」ボタンで入力内容を保存できます　<button onclick="window.print()">印刷 / PDF保存</button></div>
+  <main class="wrap">
+    <section class="sheet cover" id="section-01">
+      <div class="section-savebar"><span class="save-title">表紙・グループ情報</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-01">このセクションを登録</button></div>
+      <div>
+        <div class="eyebrow">GROUP WORK / WORKSHEET</div>
+        <h1>企業設立<br>ワークシート</h1>
+        <p class="lead">架空の企業を立ち上げるつもりで、誰に、何を、どのように届ける会社なのかをチームで考えよう。</p>
+        <div class="note"><b>このワークのゴール</b><br>会社の基本設定や事業の方向性を整理し、チーム全員が同じイメージを共有できるようにする。</div>
+        <div class="cover-mark">CREATE<br>YOUR<br>COMPANY.</div>
+      </div>
+      <div class="cover-info">
+        <div class="field"><label>会社名（仮）</label><input type="text" placeholder="例：株式会社 まちのよりみち"></div>
+        <div class="field"><label>グループ名</label><input type="text" placeholder="例：チームひまわり"></div>
+        <div class="field"><label>メンバー</label><textarea placeholder="例：佐藤、鈴木、高橋、伊藤、渡辺、小林"></textarea></div>
+        <div class="field"><label>実施日</label><input type="text" id="implementation-date" value="11月09日（月）" readonly
+            aria-readonly="true"></div>
+      </div>
+    </section>
+
+    <section class="sheet" id="section-02">
+      <div class="section-savebar"><span class="save-title">セクション 01</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-02">このセクションを登録</button></div>
+      <h2><small>01</small>進め方と役割分担</h2>
+      <p id="work-intro">グループで意見を出し合いながら、会社の基本設定を整理していきます。まずは、どのような事業を行い、誰に何を届ける会社にするのかを考えましょう。</p>
+      <h3 id="day1-heading">取り組みの流れ</h3>
+      <table>
+        <tr>
+          <th>時間</th>
+          <th>取り組むこと</th>
+          <th>完了の目安</th>
+        </tr>
+        <tr>
+          <td>0:00–0:20</td>
+          <td>事業アイデアを出す</td>
+          <td>候補を複数出し、方向性を決める</td>
+        </tr>
+        <tr>
+          <td>0:20–1:00</td>
+          <td>事業内容・商品・サービス</td>
+          <td>何を提供する会社か明確にする</td>
+        </tr>
+        <tr>
+          <td>1:00–1:40</td>
+          <td>ターゲット・顧客の悩み</td>
+          <td>誰のどのような課題を解決するか整理する</td>
+        </tr>
+        <tr>
+          <td>1:40–1:50</td>
+          <td>休憩</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>1:50–2:30</td>
+          <td>競合・差別化</td>
+          <td>競合を調べ、自社の強みを考える</td>
+        </tr>
+        <tr>
+          <td>2:30–3:00</td>
+          <td>1日目の内容を整理</td>
+          <td>事業・顧客・強みの方向性をチームで確認する</td>
+        </tr>
+      </table>
+      <div class="day2-hidden">
+        <h3>2日目（3時間）：会社らしさを具体化する</h3>
+        <table>
+          <tr>
+            <th>時間</th>
+            <th>取り組むこと</th>
+            <th>完了の目安</th>
+          </tr>
+          <tr>
+            <td>0:00–0:15</td>
+            <td>1日目の振り返り</td>
+            <td>決定事項と未確定事項を確認する</td>
+          </tr>
+          <tr>
+            <td>0:15–0:55</td>
+            <td>会社名・企業理念</td>
+            <td>会社の存在意義や大切にする価値観を決める</td>
+          </tr>
+          <tr>
+            <td>0:55–1:35</td>
+            <td>キャッチコピー・コンセプト</td>
+            <td>会社の特徴や提供価値を短い言葉にする</td>
+          </tr>
+          <tr>
+            <td>1:35–1:45</td>
+            <td>休憩</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>1:45–2:20</td>
+            <td>会社のイメージ・雰囲気</td>
+            <td>会社らしさや大切にする印象を共有する</td>
+          </tr>
+          <tr>
+            <td>2:20–3:00</td>
+            <td>プロフィール整理・最終確認</td>
+            <td>記入漏れや内容の矛盾を確認し、完成させる</td>
+          </tr>
+        </table>
+      </div>
+      <h3>役割分担（兼任可）</h3>
+      <table>
+        <tr>
+          <th>役割</th>
+          <th>主な担当</th>
+          <th>担当者</th>
+        </tr>
+        <tr>
+          <td>進行役</td>
+          <td>話し合いを進め、全員の意見を引き出す</td>
+          <td contenteditable="true" spellcheck="false" data-placeholder="例：佐藤"></td>
+        </tr>
+        <tr>
+          <td>事業企画</td>
+          <td>事業内容・商品・サービスを整理</td>
+          <td contenteditable="true" spellcheck="false" data-placeholder="例：鈴木"></td>
+        </tr>
+        <tr>
+          <td>顧客分析</td>
+          <td>ターゲット・顧客の悩みを整理</td>
+          <td contenteditable="true" spellcheck="false" data-placeholder="例：高橋"></td>
+        </tr>
+        <tr>
+          <td>競合調査</td>
+          <td>競合企業や類似サービスを調べる</td>
+          <td contenteditable="true" spellcheck="false" data-placeholder="例：伊藤"></td>
+        </tr>
+        <tr>
+          <td>会社イメージ担当</td>
+          <td>会社名・理念・会社らしさを整理</td>
+          <td contenteditable="true" spellcheck="false" data-placeholder="例：佐藤・鈴木"></td>
+        </tr>
+        <tr>
+          <td>記録・進捗管理</td>
+          <td>決定事項を記録し、作業の進み具合を確認</td>
+          <td contenteditable="true" spellcheck="false" data-placeholder="例：高橋"></td>
+        </tr>
+      </table>
+      <div class="note"><b>話し合いのルール</b><br>①相手の意見を聞く　②否定する前に理由を尋ねる　③納得できる理由を探す　④決定事項は必ず記録する。</div>
+    </section>
+
+    <section class="sheet" id="section-03">
+      <div class="section-savebar"><span class="save-title">セクション 02</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-03">このセクションを登録</button></div>
+      <h2><small>02</small>事業内容・商品・サービス</h2>
+      <p class="hint">初めて聞く人にも「何をしている会社か」が伝わるように整理します。</p>
+      <div class="g2">
+        <div class="field"><label>業種・業界</label><textarea class="single-line" placeholder="例：飲食、教育、観光、IT"></textarea>
+        </div>
+        <div class="field"><label>主な事業</label><textarea class="single-line"
+            placeholder="例：地元農家の食材を使った惣菜の製造・販売"></textarea></div>
+        <div class="field"><label>主力商品・サービス名</label><textarea class="single-line" placeholder="例：旬のおかず定期便"></textarea>
+        </div>
+        <div class="field"><label>提供エリア</label><textarea class="single-line" placeholder="例：全国、関西、オンライン"></textarea>
+        </div>
+        <div class="field"><label>提供方法</label><textarea class="single-line" placeholder="例：店舗、訪問、ECサイト、アプリ"></textarea>
+        </div>
+        <div class="field"><label>価格帯</label><textarea class="single-line"
+            placeholder="例：1品300〜600円／定期便 月額3,000円"></textarea></div>
+      </div>
+      <div class="field"><label>商品・サービスの具体的な内容</label><textarea class="tall"
+          placeholder="例：地域の農家から仕入れた旬の野菜を使い、忙しい家庭向けに手作り惣菜を店舗とオンラインで販売する。"></textarea></div>
+      <h3>特徴と顧客にとってのメリット</h3>
+      <table>
+        <tr>
+          <th>商品・サービスの特徴</th>
+          <th>顧客にとってのメリット</th>
+        </tr>
+        <tr>
+          <td><textarea class="cell-textarea" placeholder="例：地元農家から旬の野菜を仕入れる" aria-label="商品・サービスの特徴"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：新鮮で安心できる食材を選べる" aria-label="顧客にとってのメリット"></textarea></td>
+        </tr>
+        <tr>
+          <td><textarea class="cell-textarea" placeholder="例：少量から購入できる" aria-label="商品・サービスの特徴"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：必要な分だけ無駄なく利用できる" aria-label="顧客にとってのメリット"></textarea></td>
+        </tr>
+        <tr>
+          <td><textarea class="cell-textarea" placeholder="例：店舗とオンラインで注文できる" aria-label="商品・サービスの特徴"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：忙しい日でも受け取りやすい" aria-label="顧客にとってのメリット"></textarea></td>
+        </tr>
+      </table>
+      <h3>考えるヒント</h3>
+      <ul>
+        <li>どのような商品・サービスを提供する？</li>
+        <li>顧客はどのような場面で利用する？</li>
+        <li>利用すると生活や仕事はどう変わる？</li>
+        <li>この会社がなくなったら、顧客は何に困る？</li>
+      </ul>
+      <div class="field"><label>顧客に提供する一番大きな価値</label><textarea
+          placeholder="例：忙しい毎日でも、手軽に安心できる地元の食事を楽しめること。"></textarea></div>
+    </section>
+
+    <section class="sheet" id="section-04">
+      <div class="section-savebar"><span class="save-title">セクション 03</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-04">このセクションを登録</button></div>
+      <h2><small>03</small>ターゲット・顧客像</h2>
+      <p class="hint">「誰でも」ではなく、特に利用してほしい人を具体的に想像しましょう。</p>
+      <h3>想定する顧客（ペルソナ）</h3>
+      <div class="g2">
+        <div class="field"><label>仮の名前</label><textarea class="single-line" placeholder="例：佐藤 はな"></textarea></div>
+        <div class="field"><label>年齢</label><textarea class="single-line" placeholder="例：35歳"></textarea></div>
+        <div class="field"><label>職業・働き方</label><textarea class="single-line" placeholder="例：会社員・平日はフルタイム勤務"></textarea>
+        </div>
+        <div class="field"><label>居住地・生活環境</label><textarea class="single-line"
+            placeholder="例：大阪府内の駅近マンションで家族と暮らす"></textarea></div>
+        <div class="field"><label>家族構成・ライフスタイル</label><textarea class="single-line"
+            placeholder="例：配偶者と小学生の子ども1人。平日は仕事と家事で忙しい。"></textarea></div>
+        <div class="field"><label>趣味・関心</label><textarea class="single-line" placeholder="例：料理、健康、地元のお店巡り"></textarea>
+        </div>
+        <div class="field"><label>よく利用するメディア・SNS</label><textarea class="single-line"
+            placeholder="例：Instagram、YouTube、地域情報サイト"></textarea></div>
+        <div class="field"><label>商品を知るきっかけ</label><textarea class="single-line"
+            placeholder="例：Instagramの投稿、友人の口コミ、駅前のチラシ"></textarea></div>
+      </div>
+      <div class="field"><label>購入・利用を決めるポイント</label><textarea
+          placeholder="例：価格が手頃であること、原材料が分かること、受け取りやすいこと。"></textarea></div>
+      <h3>顧客の悩みと解決方法</h3>
+      <table>
+        <tr>
+          <th>顧客が抱える悩み</th>
+          <th>悩みが生まれる原因</th>
+          <th>自社が提供できる解決策</th>
+        </tr>
+        <tr>
+          <td><textarea class="cell-textarea" placeholder="例：帰宅後に料理をする時間がない" aria-label="顧客が抱える悩みの入力欄"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：仕事や家事で時間に余裕がない" aria-label="悩みが生まれる原因の入力欄"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：温めるだけの手作り惣菜を用意する" aria-label="自社が提供できる解決策の入力欄"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><textarea class="cell-textarea" placeholder="例：栄養バランスのよい食事を用意したい" aria-label="顧客が抱える悩みの入力欄"></textarea>
+          </td>
+          <td><textarea class="cell-textarea" placeholder="例：献立を考えたり買い物をしたりする負担" aria-label="悩みが生まれる原因の入力欄"></textarea>
+          </td>
+          <td><textarea class="cell-textarea" placeholder="例：野菜を使った日替わり惣菜を販売する" aria-label="自社が提供できる解決策の入力欄"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><textarea class="cell-textarea" placeholder="例：栄養バランスのよい食事を用意したい" aria-label="顧客が抱える悩みの入力欄"></textarea>
+          </td>
+          <td><textarea class="cell-textarea" placeholder="例：献立を考えたり買い物をしたりする負担" aria-label="悩みが生まれる原因の入力欄"></textarea>
+          </td>
+          <td><textarea class="cell-textarea" placeholder="例：野菜を使った日替わり惣菜を販売する" aria-label="自社が提供できる解決策の入力欄"></textarea>
+          </td>
+        </tr>
+      </table>
+      <div class="note"><b>顧客目線で考える</b><br>「自分たちが売りたいもの」ではなく、「顧客が必要としているもの」になっているか確認しましょう。</div>
+      <div class="field"><label>この顧客が自社を利用したくなる理由</label><textarea
+          placeholder="例：帰宅が遅い日でも、地元の食材を使った惣菜をすぐに用意できるから。"></textarea></div>
+    </section>
+
+    <section class="sheet" id="section-05">
+      <div class="section-savebar"><span class="save-title">セクション 04</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-05">このセクションを登録</button></div>
+      <h2><small>04</small>競合・差別化</h2>
+      <p class="hint">同じ商品を扱う会社だけでなく、顧客の同じ悩みを別の方法で解決する会社も競合になります。</p>
+      <h3>競合企業・類似サービスを調べる</h3>
+      <table class="competitor-table">
+        <tr>
+          <th>項目</th>
+          <th>競合A</th>
+          <th>競合B</th>
+          <th>競合C</th>
+        </tr>
+        <tr>
+          <td>会社名・サービス名</td>
+          <td><textarea class="cell-textarea" placeholder="例：まちの惣菜店A"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：地域スーパーB"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：宅配サービスC"></textarea></td>
+        </tr>
+        <tr>
+          <td>WebサイトURL</td>
+          <td><textarea class="cell-textarea" placeholder="例：https://example.com/a"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：https://example.com/b"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：https://example.com/c"></textarea></td>
+        </tr>
+        <tr>
+          <td>主な顧客</td>
+          <td><textarea class="cell-textarea" placeholder="例：近隣で暮らす家族"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：幅広い年齢層"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：共働き世帯"></textarea></td>
+        </tr>
+        <tr>
+          <td>価格・料金</td>
+          <td><textarea class="cell-textarea" placeholder="例：1品300〜600円"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：1品250〜500円"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：1食600円〜"></textarea></td>
+        </tr>
+        <tr>
+          <td>強み・特徴</td>
+          <td><textarea class="cell-textarea" placeholder="例：手作り・地域密着"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：品ぞろえが豊富"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：自宅まで届ける"></textarea></td>
+        </tr>
+      </table>
+      <h3>自社と競合を比較する</h3>
+      <table class="competitor-compare">
+        <tr>
+          <th>比較ポイント</th>
+          <th>競合にある特徴</th>
+          <th>自社の特徴・強み</th>
+        </tr>
+        <tr>
+          <td>価格</td>
+          <td><textarea class="cell-textarea" placeholder="例：1品300〜600円"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：価格を抑え、続けやすくする"></textarea></td>
+        </tr>
+        <tr>
+          <td>品質・機能</td>
+          <td><textarea class="cell-textarea" placeholder="例：一般的な惣菜が中心"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：地元の旬の食材を使う"></textarea></td>
+        </tr>
+        <tr>
+          <td>サービス・対応</td>
+          <td><textarea class="cell-textarea" placeholder="例：店頭で購入"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：予約・取り置きに対応"></textarea></td>
+        </tr>
+        <tr>
+          <td>利便性・使いやすさ</td>
+          <td><textarea class="cell-textarea" placeholder="例：営業時間内に来店が必要"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：オンラインでも注文できる"></textarea></td>
+        </tr>
+        <tr>
+          <td>会社のイメージ</td>
+          <td><textarea class="cell-textarea" placeholder="例：大型店で親しみやすさは控えめ"></textarea></td>
+          <td><textarea class="cell-textarea" placeholder="例：地域に根ざした温かい雰囲気"></textarea></td>
+        </tr>
+      </table>
+      <div class="field"><label>競合にはない、自社ならではの強み</label><textarea
+          placeholder="例：地元農家と直接連携し、その日に仕入れた食材で少量ずつ調理する。"></textarea></div>
+      <div class="field"><label>顧客が競合ではなく自社を選ぶ理由</label><textarea
+          placeholder="例：作り手や食材の産地が分かり、必要な分だけ気軽に購入できるから。"></textarea></div>
+    </section>
+
+    <section class="sheet day2-hidden" id="section-06">
+      <div class="section-savebar"><span class="save-title">セクション 05</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-06">このセクションを登録</button></div>
+      <h2><small>05</small>会社名・理念・コンセプト</h2>
+      <div class="field"><label>会社名</label><input type="text" placeholder="例：株式会社 まちのよりみち"></div>
+      <div class="field"><label>会社名の由来・込めた意味</label><textarea
+          placeholder="例：「よりみち」には、忙しい日々の中でほっと一息つける場所になりたい、という思いを込めた。"></textarea></div>
+      <div class="field"><label>企業理念（会社が大切にする考え方・存在意義）</label><textarea class="tall"
+          placeholder="例：地域の人々が、自分らしく暮らせる選択肢を増やす。"></textarea></div>
+      <div class="field"><label>キャッチコピー（短く印象に残る言葉）</label><input type="text" placeholder="例：いつもの食卓に、地元のおいしさを。"></div>
+      <div class="field"><label>コンセプト（誰に、どのような価値を、どのように届ける会社か）</label><textarea class="tall"
+          placeholder="例：忙しい子育て世帯に、地元食材を使った手作り惣菜を、手軽で安心できる形で届ける。"></textarea></div>
+      <div class="field"><label>顧客に約束すること・大切にする価値</label><textarea
+          placeholder="例：食材の産地を明確にすること、毎日食べても飽きない味、丁寧な接客。"></textarea></div>
+      <div class="note"><b>まとめ方の例</b><br>「忙しい共働き世帯に、手軽で栄養バランスのよい食事を、地域密着の宅配サービスで届ける会社」のように、ターゲット・価値・提供方法が伝わる文章にしましょう。
+      </div>
+    </section>
+
+    <section class="sheet day2-hidden" id="section-07">
+      <div class="section-savebar"><span class="save-title">セクション 06</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-07">このセクションを登録</button></div>
+      <h2><small>06</small>会社のイメージ・デザイン方針</h2>
+      <p class="hint">会社の特徴や大切にしている価値観が、相手にどのような印象として伝わってほしいかを考えます。</p>
+      <div class="field"><label>ブランドを表すキーワード（3〜5個）</label><textarea class="single-line"
+          placeholder="例：親しみやすい、安心、自然、シンプル、先進的"></textarea></div>
+      <div class="field"><label>顧客にどのような印象を持ってほしい？</label><textarea placeholder="例：親しみやすく、安心できて、地域に根ざした会社。"></textarea>
+      </div>
+      <div class="g2">
+        <div class="field"><label>会社を表す色・カラー</label><textarea class="single-line"
+            placeholder="例：若草色、生成り色、温かみのあるオレンジ"></textarea></div>
+        <div class="field"><label>その色を選ぶ理由</label><textarea class="single-line"
+            placeholder="例：若草色は新鮮な野菜や自然を、オレンジは食卓の温かさを表すため。"></textarea></div>
+        <div class="field"><label>会社から受ける印象・雰囲気</label><textarea class="single-line"
+            placeholder="例：自然体で親しみやすい。手作りの温かさが感じられる。"></textarea></div>
+        <div class="field"><label>言葉づかい・伝え方の雰囲気</label><textarea class="single-line"
+            placeholder="例：専門用語を避け、近所の人に話しかけるようなやさしい言葉。"></textarea></div>
+      </div>
+      <div class="field"><label>避けたいデザイン・与えたくない印象</label><textarea placeholder="例：高級すぎる、冷たい、敷居が高い、堅苦しい印象。"></textarea>
+      </div>
+      <div class="field"><label>参考にしたいWebサイト・ブランド・デザイン（URLなど）</label><textarea
+          placeholder="例：地域の農産物直売所のWebサイト。参考URLや、気に入った点も記入する。"></textarea></div>
+      <h3>会社の印象に近いもの（当てはまるものにチェック）</h3>
+      <div class="checks">
+        <label class="check"><input type="checkbox"> シンプル・ミニマル</label><label class="check"><input type="checkbox">
+          高級感・上質</label><label class="check"><input type="checkbox"> 親しみやすい・温かい</label><label class="check"><input
+            type="checkbox"> ポップ・楽しい</label><label class="check"><input type="checkbox"> 自然・ナチュラル</label><label
+          class="check"><input type="checkbox"> 先進的・近未来的</label><label class="check"><input type="checkbox">
+          信頼感・堅実</label><label class="check"><input type="checkbox"> 活動的・エネルギッシュ</label>
+      </div>
+      <div class="field"><label>会社らしさを表すうえで大切にしたいこと</label><textarea class="tall"
+          placeholder="例：地元とのつながり、手作りの温かさ、安心できる情報発信を一貫して表現する。"></textarea></div>
+    </section>
+
+    <section class="sheet day2-hidden" id="section-08">
+      <div class="section-savebar"><span class="save-title">セクション 07</span><span class="save-status" aria-live="polite"
+          hidden></span><button type="button" class="save-button" disabled
+          data-save-section="section-08">このセクションを登録</button></div>
+      <h2><small>07</small>最終企業プロフィール</h2>
+      <p>決定した内容を整理し、会社の基本プロフィールを完成させます。変更する場合は、グループ全員で確認してから更新してください。</p>
+      <div class="field"><label>会社名</label><input type="text" placeholder="例：株式会社 まちのよりみち"></div>
+      <div class="field"><label>業種・事業内容</label><textarea placeholder="例：地域の農産物を活用した惣菜の製造・販売。店舗とオンラインで提供する。"></textarea>
+      </div>
+      <div class="field"><label>主な商品・サービス</label><textarea placeholder="例：日替わり惣菜、旬の野菜セット、惣菜の定期便"></textarea></div>
+      <div class="field"><label>ターゲット顧客</label><textarea placeholder="例：仕事や子育てで忙しく、手軽で安心できる食事を求める30〜40代の家庭。"></textarea>
+      </div>
+      <div class="field"><label>顧客の悩み・ニーズ</label><textarea
+          placeholder="例：帰宅後に料理をする時間がないが、家族には栄養のある食事を用意したい。"></textarea></div>
+      <div class="field"><label>競合と比べた強み・差別化ポイント</label><textarea
+          placeholder="例：地元農家との直接連携、食材の産地表示、少量から購入できること。"></textarea></div>
+      <div class="field"><label>企業理念</label><textarea placeholder="例：地域の恵みを活かし、食を通じて毎日の暮らしに小さな幸せを届ける。"></textarea></div>
+      <div class="field"><label>キャッチコピー</label><input type="text" placeholder="例：いつもの食卓に、地元のおいしさを。"></div>
+      <div class="field"><label>コンセプト</label><textarea></textarea></div>
+      <div class="field"><label>会社のイメージ・雰囲気</label><textarea placeholder="例：自然体で親しみやすく、地域に根ざした温かい会社。"></textarea></div>
+      <div class="field"><label>会社の概要（1〜2文で整理）</label><textarea class="tall"
+          placeholder="どのような顧客に、何を提供し、どのような価値を届ける会社なのかを簡潔にまとめましょう。"></textarea></div>
+      <h3>グループ内での最終確認</h3>
+      <div class="note"><b>完成前に確認</b><br>会社の基本情報・顧客像・競合との違い・会社らしさについて、メンバー全員の認識が一致しているか確認しましょう。</div>
+      <h3>最終チェック</h3>
+      <div class="checks"><label class="check"><input type="checkbox"> 何をしている会社か説明できる</label><label class="check"><input
+            type="checkbox"> 誰に向けた会社か明確である</label><label class="check"><input type="checkbox">
+          顧客の悩みと解決策がつながっている</label><label class="check"><input type="checkbox"> 競合との違いを説明できる</label><label
+          class="check"><input type="checkbox"> 会社名・理念・コピーに一貫性がある</label><label class="check"><input type="checkbox">
+          デザインの方向性を共有できている</label><label class="check"><input type="checkbox"> 全員が同じ内容を説明できる</label><label
+          class="check"><input type="checkbox"> 会社の基本情報が整理されている</label></div>
+      <div class="field"><label>講師からのコメント／確認事項</label><textarea class="tall"
+          placeholder="例：ターゲットをもう少し具体化する。競合との違いを商品内容に反映する。"></textarea></div>
+      <div class="foot">企業設立ワークシート　/　GROUP WORK</div>
+    </section>
+  </main>
+  <script>
+    // 2026年11月10日 09:10（日本時間）までは2日目の内容を隠し、時刻到達後に表示する。
+    (function () {
+      "use strict";
+      var revealAt = new Date("2026-11-10T00:10:00Z").getTime(); // 09:10 JST
+      var hiddenItems = document.querySelectorAll(".day2-hidden");
+      var dateField = document.getElementById("implementation-date");
+      var intro = document.getElementById("work-intro");
+      var day1Heading = document.getElementById("day1-heading");
+
+      function revealIfTimeHasCome() {
+        if (Date.now() >= revealAt) {
+          if (intro) intro.textContent = "全員で意見を出し合いながら、3時間×2日間（合計6時間）で会社の基本設定をまとめます。1日目は事業の土台を考え、2日目は会社らしさを具体化してプロフィールを完成させます。";
+          if (day1Heading) day1Heading.textContent = "1日目（3時間）：事業の土台をつくる";
+          if (dateField) dateField.value = "11月09日（月）・10日（火）";
+          hiddenItems.forEach(function (item) {
+            item.classList.remove("day2-hidden");
+          });
+          return true;
+        }
+        return false;
+      }
+
+      if (!revealIfTimeHasCome()) {
+        var timer = window.setTimeout(function checkAgain() {
+          if (!revealIfTimeHasCome()) {
+            timer = window.setTimeout(checkAgain, Math.min(revealAt - Date.now(), 60000));
+          }
+        }, Math.min(revealAt - Date.now(), 60000));
+
+        // タブがバックグラウンドにある間に時刻を過ぎた場合も、復帰時に表示する。
+        document.addEventListener("visibilitychange", revealIfTimeHasCome);
+      }
+    })();
+
+    (function () {
+      "use strict";
+
+      var STORAGE_PREFIX = "companyCreationWorksheet:";
+      var FIELD_SELECTOR = 'input[type="text"]:not([readonly]), input[type="checkbox"], textarea, td[contenteditable="true"]';
+      var sections = Array.prototype.slice.call(document.querySelectorAll("section.sheet"));
+
+      function fieldsIn(section) {
+        return Array.prototype.slice.call(section.querySelectorAll(FIELD_SELECTOR));
+      }
+
+      function assignKeys(section) {
+        fieldsIn(section).forEach(function (field, index) {
+          if (!field.getAttribute("data-storage-key")) {
+            field.setAttribute("data-storage-key", section.id + ":field-" + index);
+          }
+        });
+      }
+
+      function valueOf(field) {
+        if (field.tagName === "INPUT" && field.type === "checkbox") return !!field.checked;
+        if (field.tagName === "TD" && field.getAttribute("contenteditable") === "true") return field.textContent || "";
+        return field.value == null ? "" : field.value;
+      }
+
+      function applyValue(field, value) {
+        if (field.tagName === "INPUT" && field.type === "checkbox") {
+          field.checked = value === true || value === "true" || value === 1;
+        } else if (field.tagName === "TD" && field.getAttribute("contenteditable") === "true") {
+          field.textContent = value == null ? "" : String(value);
+        } else {
+          field.value = value == null ? "" : String(value);
+        }
+      }
+
+      function snapshot(section) {
+        assignKeys(section);
+        return fieldsIn(section).map(function (field) {
+          return { key: field.getAttribute("data-storage-key"), value: valueOf(field) };
+        });
+      }
+
+      function update(section) {
+        var button = section.querySelector(".save-button");
+        var status = section.querySelector(".save-status");
+        if (!button || !status) return;
+
+        var current = JSON.stringify(snapshot(section));
+        var baseline = section.getAttribute("data-saved-snapshot") || "[]";
+        var dirty = current !== baseline;
+
+        button.disabled = !dirty;
+        status.hidden = !dirty;
+        status.textContent = dirty ? "未登録の変更があります" : "";
+      }
+
+      function load(section) {
+        assignKeys(section);
+        try {
+          var raw = window.localStorage.getItem(STORAGE_PREFIX + section.id);
+          if (raw) {
+            var data = JSON.parse(raw);
+            if (data && Array.isArray(data.fields)) {
+              var values = {};
+              data.fields.forEach(function (item) {
+                if (item && typeof item.key === "string") values[item.key] = item.value;
+              });
+              fieldsIn(section).forEach(function (field) {
+                var key = field.getAttribute("data-storage-key");
+                if (Object.prototype.hasOwnProperty.call(values, key)) applyValue(field, values[key]);
+              });
+            } else if (data && typeof data === "object" && !Array.isArray(data)) {
+              // Earlier versions stored values as a plain object.
+              fieldsIn(section).forEach(function (field) {
+                var key = field.getAttribute("data-storage-key");
+                if (Object.prototype.hasOwnProperty.call(data, key)) applyValue(field, data[key]);
+              });
+            }
+          }
+        } catch (error) {
+          console.error("保存データの読み込みに失敗しました (" + section.id + ")", error);
+        }
+        section.setAttribute("data-saved-snapshot", JSON.stringify(snapshot(section)));
+        update(section);
+      }
+
+      function findSectionFromTarget(target) {
+        // Avoid instanceof Element: it can fail for elements originating in another document.
+        if (!target || target.nodeType !== 1) return null;
+        var field = target.matches && target.matches(FIELD_SELECTOR) ? target :
+          (target.closest ? target.closest(FIELD_SELECTOR) : null);
+        if (!field) return null;
+        return field.closest ? field.closest("section.sheet") : null;
+      }
+
+      function onEdit(event) {
+        var section = findSectionFromTarget(event.target);
+        if (section) update(section);
+      }
+
+      // Delegated listeners work for existing and dynamically added fields.
+      document.addEventListener("input", onEdit, true);
+      document.addEventListener("change", onEdit, true);
+
+      sections.forEach(function (section) {
+        load(section);
+
+        // Re-evaluate when fields are inserted or removed. Ignore save-bar mutations
+        // so updating the status message cannot trigger an observer loop.
+        if (window.MutationObserver) {
+          var observer = new MutationObserver(function (records) {
+            var changedFields = false;
+            records.forEach(function (record) {
+              var target = record.target && record.target.nodeType === 1 ? record.target : null;
+              if (target && target.closest && target.closest(".section-savebar")) return;
+              if (record.type !== "childList") return;
+
+              Array.prototype.forEach.call(record.addedNodes, function (node) {
+                if (node.nodeType === 1 &&
+                  ((node.matches && node.matches(FIELD_SELECTOR)) ||
+                    (node.querySelector && node.querySelector(FIELD_SELECTOR)))) changedFields = true;
+              });
+              Array.prototype.forEach.call(record.removedNodes, function (node) {
+                if (node.nodeType === 1 &&
+                  ((node.matches && node.matches(FIELD_SELECTOR)) ||
+                    (node.querySelector && node.querySelector(FIELD_SELECTOR)))) changedFields = true;
+              });
+            });
+            if (changedFields) update(section);
+          });
+          observer.observe(section, { childList: true, subtree: true });
+        }
+      });
+
+      document.querySelectorAll("button[data-save-section]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          if (button.disabled) return;
+          var section = document.getElementById(button.getAttribute("data-save-section"));
+          if (!section) return;
+
+          try {
+            var data = snapshot(section);
+            window.localStorage.setItem(
+              STORAGE_PREFIX + section.id,
+              JSON.stringify({ version: 2, fields: data })
+            );
+            section.setAttribute("data-saved-snapshot", JSON.stringify(data));
+            update(section);
+            window.alert("登録しました。");
+          } catch (error) {
+            console.error("保存に失敗しました (" + section.id + ")", error);
+            window.alert("保存できませんでした。ブラウザの保存設定または容量をご確認ください。");
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
