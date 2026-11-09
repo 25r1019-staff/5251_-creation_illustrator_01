@@ -911,10 +911,10 @@
     </section>
   </main>
   <script>
-    // 2026年11月10日 09:10（日本時間）までは2日目の内容を隠し、時刻到達後に表示する。
+    // 2027年2月3日 09:10（日本時間）までは2日目の内容を隠し、時刻到達後に表示する。
     (function () {
       "use strict";
-      var revealAt = new Date("2026-11-10T00:10:00Z").getTime(); // 09:10 JST
+      var revealAt = new Date("2027-02-03T00:10:00Z").getTime(); // 09:10 JST
       var hiddenItems = document.querySelectorAll(".day2-hidden");
       var dateField = document.getElementById("implementation-date");
       var intro = document.getElementById("work-intro");
@@ -924,7 +924,7 @@
         if (Date.now() >= revealAt) {
           if (intro) intro.textContent = "全員で意見を出し合いながら、3時間×2日間（合計6時間）で会社の基本設定をまとめます。1日目は事業の土台を考え、2日目は会社らしさを具体化してプロフィールを完成させます。";
           if (day1Heading) day1Heading.textContent = "1日目（3時間）：事業の土台をつくる";
-          if (dateField) dateField.value = "11月09日（月）・10日（火）";
+          if (dateField) dateField.value = "11月09日（月）・2月03日（木）";
           hiddenItems.forEach(function (item) {
             item.classList.remove("day2-hidden");
           });
